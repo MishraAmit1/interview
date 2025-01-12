@@ -1,11 +1,14 @@
+// Load environment variables from .env file
+require("dotenv").config();
+
 const mysql = require("mysql2");
 
-// Database connection
+// Database connection using environment variables
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root", // Update with your MySQL username
-  password: "", // Update with your MySQL password
-  database: "interview_scheduling",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
